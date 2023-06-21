@@ -1,1 +1,18 @@
-<app-server></app-server> <app-server></app-server>
+<!-- Property Binding: wrap an element property with [] and set the string value to a TS expression, such as a component property defined in corresponding TS file, to make its value dynamic -->
+<!-- Event Binding: use (eventType)="onEvent()" syntax where onEvent() is an event handler method defined in the component class; $event variable represents the data associated with the occurring event -->
+<!-- Two-Way Binding: wrap a property or directive with [()] to access a component property's value and change it in response to events; ngModel is a built-in directive to allow two-way binding in form elements (from Angular's FormModule imported into the AppModule) -->
+
+<label>Server Name</label>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)" /> -->
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<!-- <p>{{ serverName }}</p> -->
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()"
+>
+  Add Server
+</button>
+<p>{{ serverCreationStatus }}</p>
+<app-server></app-server>
+<app-server></app-server>
