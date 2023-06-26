@@ -1,2 +1,6 @@
-<!-- use string interpolation with {{ }} syntax to render dynamic values defined in the component TS file -->
-<p>Server with ID {{ serverId }} is {{ getServerStatus() }}</p>
+<p
+  [ngStyle]="{ backgroundColor: getColor() }"
+  [ngClass]="{ online: serverStatus === 'online' }"
+>
+  Server with ID {{ serverId }} is {{ getServerStatus() }}
+</p>

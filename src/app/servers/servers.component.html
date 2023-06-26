@@ -1,6 +1,16 @@
-<!-- Property Binding: wrap an element property with [] and set the string value to a TS expression, such as a component property defined in corresponding TS file, to make its value dynamic -->
-<!-- Event Binding: use (eventType)="onEvent()" syntax where onEvent() is an event handler method defined in the component class; $event variable represents the data associated with the occurring event -->
-<!-- Two-Way Binding: wrap a property or directive with [()] to access a component property's value and change it in response to events; ngModel is a built-in directive to allow two-way binding in form elements (from Angular's FormModule imported into the AppModule) -->
+<!-- ***DATABINDING*** -->
+<!-- STRING INTERPOLATION: use {{ }} syntax to render dynamic values defined in the component TS file -->
+<!-- PROPERTY BINDING: wrap an element property with [] and set the string value to a TS expression, such as a component property defined in TS file, to make its value dynamic -->
+<!-- EVENT BINDING: use (eventType)="onEvent()" syntax where onEvent() is an event handler method defined in the component class; $event variable represents the data associated with the occurring event -->
+<!-- TWO-WAY BINDING: wrap a property or directive with [()] to access a component property's value and change it in response to events; ngModel is a built-in directive to allow two-way binding in form elements (from Angular's FormModule imported into the AppModule) -->
+
+<!-- ***DIRECTIVES*** -->
+<!-- STRUCTURAL DIRECTIVES: change the layout of the DOM by adding or removing elements; Angular identifies these by using * before the directive name
+        *ngIf: passed an expression returning a boolean, determining whether the element will render on the DOM; enhance the directive with an else statement by adding a semicolon with else statement in the *ngIf value string -->
+<!-- ATTRIBUTE DIRECTIVES: makes some change to the element it's placed on
+        [ngStyle]: edits the styling of the element; use property binding to assign a value of a JS object with key/value pairs of the style name (camelCase in JS, or 'kebab-case-w-quotes') and value or expression returning a value for the style; *see server.component.html*
+        [ngClass]: similar to ngStyle, but it adds or removes CSS classes, therefore adding or removing the styles assigned to that class; assign a value of JS object with key/value pairs of CSS class names and the condition to determine if the class should be added; *see server.component.html*
+        *ngFor:  -->
 
 <label>Server Name</label>
 <!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)" /> -->
@@ -13,6 +23,6 @@
 >
   Add Server
 </button>
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+<app-server *ngFor="let server of servers"></app-server>
